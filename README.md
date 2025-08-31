@@ -104,6 +104,20 @@ If you ran `poetry run dvc repro`, these are generated.
 - **DVC**: `dvc repro` runs stages and regenerates artifacts; raw datasets can be tracked via `*.dvc` files.
 - **MLflow**: file store by default (`file:mlruns`). The app does not require MLflow UI to run.
 
+## Branching workflow (implemented)
+
+We use **GitHub Flow**: short-lived feature branches, PRs into `main`, CI must pass before merge.  
+This README was updated via a branch and PR.
+
+**Example (for this README update)**
+```bash
+git checkout -b docs/update-readme
+git add README.md
+git commit -m "docs: update README with deploy links and branching note"
+git push -u origin docs/update-readme
+# Open a Pull Request on GitHub → wait for CI → Merge → delete branch
+```
+
 ## Team members
 | Name | Dataset | Email | GitHub |
 |------|------|-------|--------|
