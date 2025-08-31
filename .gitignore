@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.venv/
+
+# Logs
+*.log
+
+# PyCaret / MLflow
+artifacts/
+mlartifacts/
+mlruns/
+catboost_info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Hydra
+outputs/
+
+# DVC
+.dvc/tmp/
+
+
+# Allow app-critical artifacts to be committed
+!models/catboost_used_car_model.pkl
+!models/wheat_seeds_pipeline.pkl
+!src/config/pycaret_setup_config.json
+!data/wheatseeds/example_request.json
+!data/wheatseeds/wheat_seeds_batch_examples.csv
