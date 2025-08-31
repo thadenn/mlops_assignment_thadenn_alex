@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = [{ name = "Alex, Thadenn" }]
 readme = "README.md"
-requires-python = "3.10.18"
+requires-python = "==3.10.18"
 dependencies = [
     "pandas==2.1.4",
     "pycaret[analysis,models,tuners,mlops]==3.3.2",
