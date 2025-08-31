@@ -26,4 +26,4 @@ train:
 
 mlflow:
   experiment: IT3385_WheatSeeds_Task2
-  tracking_uri: ${oc.env:MLFLOW_TRACKING_URI,null}
+  tracking_uri: "http://localhost:5000"
