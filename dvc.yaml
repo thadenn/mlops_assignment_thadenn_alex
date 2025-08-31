@@ -20,11 +20,5 @@ stages:
     deps:
       - src/modelling_wheat.py
       - data/wheatseeds/03_Wheat_Seeds.csv
-    
-    outs_no_cache:
-      - src/config/pycaret_setup_config.json
-      - data/wheatseeds/example_request.json
-      - data/wheatseeds/wheat_seeds_batch_examples.csv
-    
     outs:
       - models/wheat_seeds_pipeline.pkl

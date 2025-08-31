@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  preprocess_car:
+    cmd: poetry run python src/preprocessing_car.py
+    deps:
+    - path: data/raw/02_Used_Car_Prices.xlsx
+      hash: md5
+      md5: de5404e02c0bfee5c9633dc98b404f34
+      size: 430051
+    - path: src/preprocessing_car.py
+      hash: md5
+      md5: 1565f8f9587ac504fba456b8a4cc39bd
+      size: 2355
+    outs:
+    - path: data/processed/clean_used_car_prices.csv
+      hash: md5
+      md5: cbdf19c1a72554df6b6521416d925fa4
+      size: 593228
+  train_car:
+    cmd: poetry run python src/modelling_car.py
+    deps:
+    - path: data/processed/clean_used_car_prices.csv
+      hash: md5
+      md5: cbdf19c1a72554df6b6521416d925fa4
+      size: 593228
+    - path: src/modelling_car.py
+      hash: md5
+      md5: de19d0c81903389722693c42904fa1fb
+      size: 3022
+    outs:
+    - path: models/catboost_used_car_model.pkl
+      hash: md5
+      md5: 2aea2a0178a8c6f1cbae8e6f14589a4a
+      size: 1187770
+  train_wheat:
+    cmd: poetry run python src/modelling_wheat.py
+    deps:
+    - path: data/wheatseeds/03_Wheat_Seeds.csv
+      hash: md5
+      md5: f0052a5603bbd523191f4874453755c5
+      size: 8903
+    - path: src/modelling_wheat.py
+      hash: md5
+      md5: de3b25f048c4b265e9f04b57fa9d6603
+      size: 7994
+    outs:
+    - path: models/wheat_seeds_pipeline.pkl
+      hash: md5
+      md5: 01974843b3bb1ad812d44d7229a2955c
+      size: 302491
