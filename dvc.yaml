@@ -8,7 +8,7 @@ stages:
       - data/processed/clean_used_car_prices.csv
 
   train_car:
-    cmd: poetry run python src/modelling_car.py
+    cmd: set "MLFLOW_TRACKING_URI=file:mlruns" && poetry run python src/modelling_car.py
     deps:
       - src/modelling_car.py
       - data/processed/clean_used_car_prices.csv
@@ -16,7 +16,7 @@ stages:
       - models/catboost_used_car_model.pkl
 
   train_wheat:
-    cmd: poetry run python src/modelling_wheat.py
+    cmd: set "MLFLOW_TRACKING_URI=file:mlruns" && poetry run python src/modelling_wheat.py
     deps:
       - src/modelling_wheat.py
       - data/wheatseeds/03_Wheat_Seeds.csv

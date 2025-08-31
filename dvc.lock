@@ -17,7 +17,8 @@ stages:
       md5: cbdf19c1a72554df6b6521416d925fa4
       size: 593228
   train_car:
-    cmd: poetry run python src/modelling_car.py
+    cmd: set "MLFLOW_TRACKING_URI=file:mlruns" && poetry run python 
+      src/modelling_car.py
     deps:
     - path: data/processed/clean_used_car_prices.csv
       hash: md5
@@ -30,10 +31,11 @@ stages:
     outs:
     - path: models/catboost_used_car_model.pkl
       hash: md5
-      md5: 2aea2a0178a8c6f1cbae8e6f14589a4a
+      md5: 12ffa51cb9a7ff8c287055a11cf16490
       size: 1187770
   train_wheat:
-    cmd: poetry run python src/modelling_wheat.py
+    cmd: set "MLFLOW_TRACKING_URI=file:mlruns" && poetry run python 
+      src/modelling_wheat.py
     deps:
     - path: data/wheatseeds/03_Wheat_Seeds.csv
       hash: md5
