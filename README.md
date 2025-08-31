@@ -24,6 +24,7 @@ poetry install
 # optional: reproduce pipeline (writes models/data)
 # Windows: set MLFLOW_TRACKING_URI=file:mlruns
 # macOS/Linux: export MLFLOW_TRACKING_URI=file:mlruns
+poetry run mlflow ui
 poetry run dvc repro
 poetry run streamlit run src/app.py
 ```
