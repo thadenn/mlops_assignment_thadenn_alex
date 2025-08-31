@@ -1,0 +1,30 @@
+stages:
+  preprocess_car:
+    cmd: poetry run python src/preprocessing_car.py
+    deps:
+      - src/preprocessing_car.py
+      - data/raw/02_Used_Car_Prices.xlsx
+    outs:
+      - data/processed/clean_used_car_prices.csv
+
+  train_car:
+    cmd: poetry run python src/modelling_car.py
+    deps:
+      - src/modelling_car.py
+      - data/processed/clean_used_car_prices.csv
+    outs:
+      - models/catboost_used_car_model.pkl
+
+  train_wheat:
+    cmd: poetry run python src/modelling_wheat.py
+    deps:
+      - src/modelling_wheat.py
+      - data/wheatseeds/03_Wheat_Seeds.csv
+    
+    outs_no_cache:
+      - src/config/pycaret_setup_config.json
+      - data/wheatseeds/example_request.json
+      - data/wheatseeds/wheat_seeds_batch_examples.csv
+    
+    outs:
+      - models/wheat_seeds_pipeline.pkl
