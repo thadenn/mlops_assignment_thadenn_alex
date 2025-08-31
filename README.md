@@ -25,13 +25,10 @@ poetry install
 # Windows: set MLFLOW_TRACKING_URI=file:mlruns
 # macOS/Linux: export MLFLOW_TRACKING_URI=file:mlruns
 poetry run mlflow ui
-poetry run dvc repro
+poetry run python src/preprocessing_car.py
+poetry run python src/modelling_car.py
+poetry run python src/modelling_wheat.py
 poetry run streamlit run src/app.py
-```
-MLflow UI (optional):
-```bash
-poetry run mlflow ui
-# open http://127.0.0.1:5000
 ```
 
 ### C) Local from a zip
@@ -103,7 +100,7 @@ If you ran `poetry run dvc repro`, these are generated.
 
 ## DVC & MLflow notes
 - **DVC**: `dvc repro` runs stages and regenerates artifacts; raw datasets can be tracked via `*.dvc` files.
-- **MLflow**: file store by default (`file:mlruns`). The app does not require MLflow UI to run.
+- **MLflow**: file store by default (`file:mlruns`).
 
 ## Branching workflow (implemented)
 
